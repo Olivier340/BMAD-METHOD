@@ -1,0 +1,89 @@
+<story-context id="story-2.4-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.4</storyId>
+    <title>Gestion des Projets</title>
+    <status>Ready</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-2.4.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>developer or project manager</asA>
+    <iWant>comprehensive project management interface for selecting, configuring, and managing BMad projects</iWant>
+    <soThat>easily switch between different projects and maintain project-specific contexts and settings</soThat>
+    <tasks>Project Selection Interface, Project Configuration Panel, Project Status Dashboard, Multi-Project Context Management, Project Creation and Setup</tasks>
+  </story>
+
+  <acceptanceCriteria>Project browser with search/filtering, configuration interface, status dashboard, context switching, project creation wizard</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs-eng-perso/solution-architecture.md" section="3. Repository and Service Architecture - Backend Services">
+        <description>ProjectService backend integration specifications</description>
+      </doc>
+      <doc path="docs-eng-perso/PRD.md" section="FR001 Gestion des projets">
+        <description>Business requirements for project management</description>
+      </doc>
+      <doc path="docs-eng-perso/api-contracts-server.md" section="Project Management Endpoints">
+        <description>API specifications for project operations</description>
+      </doc>
+    </docs>
+    <code>
+      <dependencies>
+        <dep story="2.1" type="frontend">React Foundation</dep>
+        <dep story="2.2" type="frontend">Layout Principal</dep>
+      </dependencies>
+    </code>
+    <dependencies>
+      <internal>
+        <dep story="1.4" type="backend">Project Service backend functionality</dep>
+      </internal>
+      <external>
+        <dep type="api-client" name="Axios">Project data fetching and management</dep>
+      </external>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <technical>
+      <constraint>Redux state management for project context</constraint>
+      <constraint>Real-time project status updates</constraint>
+    </technical>
+    <business>
+      <constraint>Seamless context switching between projects</constraint>
+      <constraint>Project creation guided workflow</constraint>
+    </business>
+  </constraints>
+
+  <interfaces>
+    <ui>
+      <interface component="ProjectBrowser">
+        <description>Project selection and management interface</description>
+      </interface>
+      <interface component="ProjectSettings">
+        <description>Project configuration and customization panel</description>
+      </interface>
+    </ui>
+    <api>
+      <interface endpoint="/api/projects/**">
+        <description>Project management and configuration endpoints</description>
+      </interface>
+    </api>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <standard>React Testing Library for project management components</standard>
+      <standard>Jest for context switching and state management</standard>
+    </standards>
+    <locations>
+      <location>src/web/src/pages/Projects/**/__tests__/</location>
+    </locations>
+    <ideas>
+      <idea>Test project context switching and state persistence</idea>
+      <idea>Test project creation workflow and validation</idea>
+    </ideas>
+  </tests>
+</story-context>

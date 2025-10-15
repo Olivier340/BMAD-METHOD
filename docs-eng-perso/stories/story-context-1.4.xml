@@ -1,0 +1,94 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.4</storyId>
+    <title>Service de projets - Scan automatique et gestion du contexte actif</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-1.4.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>développeur utilisant BMad Visual Studio</asA>
+    <iWant>pouvoir scanner automatiquement les projets BMad disponibles et gérer le contexte actif</iWant>
+    <soThat>naviguer efficacement entre différents projets et maintenir un environnement de développement cohérent</soThat>
+    <tasks>Implémenter le service de scan automatique des projets BMad; Développer l'interface de gestion du contexte de projet; Ajouter la persistance du contexte actif; Implémenter la navigation fluide entre projets</tasks>
+  </story>
+
+  <acceptanceCriteria>Le système détecte automatiquement tous les projets BMad présents dans l'environnement de développement; Interface utilisateur permet de visualiser et sélectionner un projet comme contexte actif; Le contexte de projet actif est maintenu de manière persistante entre les sessions; Navigation fluide et synchronisée entre les différents projets configurés</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <item>
+        <path>docs-eng-perso/epics.md</path>
+        <title>Epic Breakdown</title>
+        <section>Epic 1 - Story 4: Service de projets</section>
+        <snippet>Service de projets - Scan automatique des projets BMad et gestion du contexte actif</snippet>
+      </item>
+      <item>
+        <path>docs-eng-perso/solution-architecture.md</path>
+        <title>Solution Architecture</title>
+        <section>Backend Services</section>
+        <snippet>Project scanning and context management service</snippet>
+      </item>
+      <item>
+        <path>docs-eng-perso/PRD.md</path>
+        <title>Product Requirements Document</title>
+        <section>Project Management</section>
+        <snippet>Automatic project discovery and active context management</snippet>
+      </item>
+    </docs>
+    <code>
+      <item>
+        <path>src/services/ProjectService.ts</path>
+        <kind>file</kind>
+        <symbol>ProjectService class</symbol>
+        <lines>1-100</lines>
+        <reason>Main service for project scanning and context management</reason>
+      </item>
+      <item>
+        <path>src/models/Project.ts</path>
+        <kind>file</kind>
+        <symbol>Project model</symbol>
+        <lines>1-50</lines>
+        <reason>Project data model definition</reason>
+      </item>
+      <item>
+        <path>src/components/ProjectSelector.tsx</path>
+        <kind>file</kind>
+        <symbol>ProjectSelector component</symbol>
+        <lines>1-80</lines>
+        <reason>React component for project selection interface</reason>
+      </item>
+    </code>
+    <dependencies>
+      <ecosystem name="Node.js">
+        <package name="chokidar" version="^3.5.0">File system watcher for project scanning</package>
+        <package name="glob" version="^10.0.0">File pattern matching for project discovery</package>
+        <package name="path" version="^0.12.7">Path manipulation utilities</package>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>Service de projets doit intégrer avec l'architecture backend existante; Utiliser les patterns de service établis dans l'infrastructure; Doit supporter la persistance SQLite configurée; Interface doit respecter les standards Material-UI établis</constraints>
+  <interfaces>
+    <interface>
+      <name>ProjectService</name>
+      <kind>class</kind>
+      <signature>class ProjectService { scanProjects(): Promise&lt;Project[]&gt;; setActiveProject(projectId: string): Promise&lt;void&gt;; getActiveProject(): Promise&lt;Project&gt;; }</signature>
+      <path>src/services/ProjectService.ts</path>
+    </interface>
+    <interface>
+      <name>ProjectSelector</name>
+      <kind>component</kind>
+      <signature>ProjectSelector(props: { projects: Project[]; activeProjectId: string; onProjectChange: (projectId: string) =&gt; void; })</signature>
+      <path>src/components/ProjectSelector.tsx</path>
+    </interface>
+  </interfaces>
+  <tests>
+    <standards>Unit tests for project service; Integration tests for project scanning; Component tests for UI; End-to-end tests for project context management</standards>
+    <locations>src/services/**/__tests__/**, src/components/**/__tests__/**, tests/integration/**</locations>
+    <ideas>Test project scanning with mock file systems; Test context persistence across sessions; Test UI component interactions; Test error handling for invalid projects</ideas>
+  </tests>
+</story-context>

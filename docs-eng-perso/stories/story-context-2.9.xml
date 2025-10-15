@@ -1,0 +1,89 @@
+<story-context id="story-2.9-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.9</storyId>
+    <title>Nettoyer le projet de fichiers obsolètes et non liés aux épics 1 et 2</title>
+    <status>Approved</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>/home/oga/www/BMAD-Org/bmad-method-perso/docs-eng-perso/stories/story-2.9.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>développeur</asA>
+    <iWant>nettoyer le projet de tous les fichiers obsolètes et ceux qui ne font pas partie des épics 1 et 2</iWant>
+    <soThat>repartir sur quelque chose de propre sans casser la fonctionnalité existante</soThat>
+    <tasks>## Tasks / Subtasks
+
+- [ ] Analyser la structure du projet et identifier les fichiers candidats à la suppression
+  - [ ] Lister les fichiers temporaires (.tmp, .log, node_modules inutilisés)
+  - [ ] Identifier les fichiers de test obsolètes non liés aux épics 1 et 2
+  - [ ] Repérer les fichiers de documentation outdated non référencés dans les épics
+- [ ] Valider la sécurité des suppressions avec équipe technique
+  - [ ] Vérifier que les fichiers à supprimer ne sont pas des dépendances critiques
+  - [ ] Confirmer que les suppressions n'affectent pas les workflows actifs
+- [ ] Effectuer la suppression des fichiers identifiés
+  - [ ] Supprimer les fichiers temporaires et caches
+  - [ ] Nettoyer les fichiers de test obsolètes
+  - [ ] Archiver les fichiers de documentation outdated si nécessaire
+- [ ] Tester la stabilité après nettoyage
+  - [ ] Vérifier que l'application démarre correctement
+  - [ ] S'assurer que les workflows des épics 1 et 2 fonctionnent toujours
+- [ ] Documenter les changements effectués
+  - [ ] Créer un rapport de nettoyage avec liste des fichiers supprimés et justifications</tasks>
+  </story>
+
+  <acceptanceCriteria>## Acceptance Criteria
+
+1. Identifier et lister tous les fichiers qui ne sont pas nécessaires aux épics 1 et 2 définis dans epics.md
+2. Supprimer les fichiers obsolètes, temporaires ou de test qui ne font pas partie du périmètre des épics 1 et 2
+3. Préserver tous les fichiers essentiels à la structure BMad-Method et aux épics actifs
+4. Vérifier que la suppression n'affecte pas le fonctionnement des composants existants
+5. Documenter les fichiers supprimés avec justification pour audit trail</acceptanceCriteria>
+
+  <artifacts>
+    <docs>## Références documentaires
+
+- Épics 1 et 2 définis dans epics.md [Source: docs-eng-perso/epics.md]
+- Structure projet décrite dans PRD.md [Source: docs-eng-perso/PRD.md]
+- Toute modification doit respecter les principes de maintenabilité NFR004</docs>
+    <code>## Artefacts de code
+
+- Préserver tous les fichiers dans les dossiers `bmad/`, `docs-eng-perso/`, et fichiers de configuration essentiels
+- Éviter de toucher aux fichiers de code source des épics 1 et 2
+- Utiliser des outils de nettoyage automatisés si disponibles (ex: pnpm prune, rm -rf node_modules/.cache)</code>
+    <dependencies>## Dépendances
+
+- Épics 1 (Infrastructure Backend) et 2 (Interface Utilisateur) doivent rester fonctionnels
+- Préserver l'intégrité des composants BMad-Method existants</dependencies>
+  </artifacts>
+
+  <constraints>## Contraintes techniques
+
+- Focus sur la préservation de l'intégrité des épics 1 et 2
+- Éviter toute suppression qui pourrait casser les dépendances entre composants
+- Prioriser la sécurité : backup partiel avant suppressions massives si nécessaire
+- Maintenir l'alignement avec la structure unifiée BMad-Method</constraints>
+  <interfaces>## Interfaces et intégrations
+
+- Interface principale : ligne de commande via terminal
+- Outils de nettoyage : pnpm, rm, find
+- Rapports de nettoyage : fichiers markdown</interfaces>
+  <tests>
+    <standards>## Standards de test
+
+- Tests d'intégration pour vérifier le fonctionnement des épics 1 et 2 après nettoyage
+- Tests de démarrage d'application
+- Validation des workflows actifs</standards>
+    <locations>## Emplacements de test
+
+- Tests dans le répertoire racine du projet
+- Validation via scripts npm/pnpm
+- Vérification manuelle des fonctionnalités clés</locations>
+    <ideas>## Idées de test
+
+- Test de régression complète après nettoyage
+- Vérification de l'absence d'erreurs 404 dans l'application
+- Test des dépendances npm/pnpm après nettoyage</ideas>
+  </tests>
+</story-context>

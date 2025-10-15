@@ -1,0 +1,94 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.3</storyId>
+    <title>Database Schema</title>
+    <status>Review Passed</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-1.3.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>développeur backend</asA>
+    <iWant>implémenter le schéma de base de données avec Prisma ORM</iWant>
+    <soThat>fournir la couche de persistance pour les projets, workflows et agents</soThat>
+    <tasks>Concevoir le schéma de base de données; Implémenter les modèles de données; Développer les services de persistance; Mettre en place le système de migrations; Configurer la connexion à la base de données</tasks>
+  </story>
+
+  <acceptanceCriteria>Base de données persiste et récupère les données correctement avec intégrité transactionnelle; Schéma de base de données optimisé avec relations appropriées et contraintes; Services de persistance implémentés pour tous les modèles de données; Système de migrations géré et versionné pour les évolutions de schéma; Intégrité référentielle maintenue avec gestion des cascades appropriées</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <item>
+        <path>docs-eng-perso/epics.md</path>
+        <title>Epic Breakdown</title>
+        <section>Epic 1 - Story 3: Base de données</section>
+        <snippet>Base de données - Schéma SQLite avec services de persistence pour tous les modèles de données</snippet>
+      </item>
+      <item>
+        <path>docs-eng-perso/solution-architecture.md</path>
+        <title>Solution Architecture</title>
+        <section>Data Layer</section>
+        <snippet>Prisma ORM with SQLite for data persistence and migrations</snippet>
+      </item>
+      <item>
+        <path>docs-eng-perso/PRD.md</path>
+        <title>Product Requirements Document</title>
+        <section>Data Management</section>
+        <snippet>SQLite database with Prisma ORM for type-safe data access</snippet>
+      </item>
+    </docs>
+    <code>
+      <item>
+        <path>src/database/</path>
+        <kind>directory</kind>
+        <symbol>database structure</symbol>
+        <lines>1-10</lines>
+        <reason>Main database directory with schema and migrations</reason>
+      </item>
+      <item>
+        <path>src/database/schema.prisma</path>
+        <kind>file</kind>
+        <symbol>Prisma schema</symbol>
+        <lines>1-200</lines>
+        <reason>Prisma schema definition with models and relations</reason>
+      </item>
+      <item>
+        <path>src/database/migrations/</path>
+        <kind>directory</kind>
+        <symbol>migrations folder</symbol>
+        <lines>1-5</lines>
+        <reason>Database migration files for schema versioning</reason>
+      </item>
+    </code>
+    <dependencies>
+      <ecosystem name="Node.js">
+        <package name="prisma" version="^5.0.0">Database ORM and migration tool</package>
+        <package name="@prisma/client" version="^5.0.0">TypeScript client for Prisma</package>
+        <package name="sqlite3" version="^5.1.0">SQLite database driver</package>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>Utiliser SQLite avec Prisma ORM pour la sécurité de type et les migrations; Concevoir un schéma normalisé mais optimisé pour SQLite; Préparer l'architecture pour une migration future vers PostgreSQL si nécessaire; Implémenter une couche d'abstraction pour faciliter les tests</constraints>
+  <interfaces>
+    <interface>
+      <name>PrismaClient</name>
+      <kind>class</kind>
+      <signature>new PrismaClient(options?: PrismaClientOptions): PrismaClient</signature>
+      <path>src/database/client.ts</path>
+    </interface>
+    <interface>
+      <name>Project</name>
+      <kind>model</kind>
+      <signature>model Project { id String @id @default(cuid()) name String path String description String? status ProjectStatus @default(ACTIVE) createdAt DateTime @default(now()) updatedAt DateTime @updatedAt }</signature>
+      <path>src/database/schema.prisma</path>
+    </interface>
+  </interfaces>
+  <tests>
+    <standards>Unit tests for database models; Integration tests for repositories; Migration testing; Data seeding tests</standards>
+    <locations>src/database/**/__tests__/**, src/**/*.test.ts, tests/database/**</locations>
+    <ideas>Test database connection and configuration; Test model creation and validation; Test repository methods; Test migration execution; Test data seeding scripts</ideas>
+  </tests>
+</story-context>

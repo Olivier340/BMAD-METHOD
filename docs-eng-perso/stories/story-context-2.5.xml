@@ -1,0 +1,86 @@
+<story-context id="story-2.5-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.5</storyId>
+    <title>Interface Workflows</title>
+    <status>Ready</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-2.5.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>developer following the BMad-Method</asA>
+    <iWant>dedicated workflow interface organized by phases with clear navigation and execution capabilities</iWant>
+    <soThat>easily discover, configure, and execute BMad workflows while maintaining context of progress through each phase</soThat>
+    <tasks>Phase-Based Navigation, Workflow Discovery and Catalog, Workflow Configuration Interface, Workflow Execution and Monitoring, Workflow History and Results</tasks>
+  </story>
+
+  <acceptanceCriteria>Phase-based layout, workflow browser with search/filtering, configuration interface, execution monitoring, history and results</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs-eng-perso/solution-architecture.md" section="3. Repository and Service Architecture - Backend Services">
+        <description>WorkflowService backend integration specifications</description>
+      </doc>
+      <doc path="docs-eng-perso/PRD.md" section="FR002 Découverte des workflows, FR003 Exécution des workflows, FR007 Navigation par phases">
+        <description>Business requirements for workflow management</description>
+      </doc>
+    </docs>
+    <code>
+      <dependencies>
+        <dep story="2.1" type="frontend">React Foundation</dep>
+        <dep story="2.2" type="frontend">Layout Principal</dep>
+      </dependencies>
+    </code>
+    <dependencies>
+      <internal>
+        <dep story="1.5" type="backend">Workflow Service backend functionality</dep>
+      </internal>
+      <external>
+        <dep type="real-time" name="Server-Sent Events">Live workflow execution monitoring</dep>
+      </external>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <technical>
+      <constraint>Redux state management for workflow execution state</constraint>
+      <constraint>Real-time progress tracking and status updates</constraint>
+    </technical>
+    <business>
+      <constraint>Phase-based organization matching BMad-Method workflow</constraint>
+      <constraint>Comprehensive workflow discovery and filtering</constraint>
+    </business>
+  </constraints>
+
+  <interfaces>
+    <ui>
+      <interface component="WorkflowCatalog">
+        <description>Workflow discovery and browsing interface</description>
+      </interface>
+      <interface component="WorkflowExecution">
+        <description>Workflow execution and monitoring interface</description>
+      </interface>
+    </ui>
+    <api>
+      <interface endpoint="/api/workflows/**">
+        <description>Workflow management and execution endpoints</description>
+      </interface>
+    </api>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <standard>React Testing Library for workflow interface components</standard>
+      <standard>Jest for execution state and real-time updates</standard>
+    </standards>
+    <locations>
+      <location>src/web/src/pages/Workflows/**/__tests__/</location>
+    </locations>
+    <ideas>
+      <idea>Test workflow execution progress and state management</idea>
+      <idea>Test real-time updates and error handling</idea>
+    </ideas>
+  </tests>
+</story-context>

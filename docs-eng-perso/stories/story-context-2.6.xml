@@ -1,0 +1,86 @@
+<story-context id="story-2.6-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.6</storyId>
+    <title>Gestion des Agents</title>
+    <status>Ready</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-2.6.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>developer or technical lead</asA>
+    <iWant>comprehensive visual interface for discovering, configuring, and managing BMad agents</iWant>
+    <soThat>easily activate, monitor, and control all available agents with clear visual feedback and intuitive controls</soThat>
+    <tasks>Agent Discovery and Catalog, Agent Configuration Interface, Agent Status Dashboard, Agent Control Panel, Agent Activity Monitoring</tasks>
+  </story>
+
+  <acceptanceCriteria>Agent browser with search/filtering, configuration interface, status dashboard, control panel, activity monitoring</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs-eng-perso/solution-architecture.md" section="3. Repository and Service Architecture - Backend Services">
+        <description>AgentService backend integration specifications</description>
+      </doc>
+      <doc path="docs-eng-perso/PRD.md" section="FR004 Gestion des agents">
+        <description>Business requirements for agent management</description>
+      </doc>
+    </docs>
+    <code>
+      <dependencies>
+        <dep story="2.1" type="frontend">React Foundation</dep>
+        <dep story="2.2" type="frontend">Layout Principal</dep>
+      </dependencies>
+    </code>
+    <dependencies>
+      <internal>
+        <dep story="1.6" type="backend">Agent Service backend functionality</dep>
+      </internal>
+      <external>
+        <dep type="real-time" name="Server-Sent Events">Live agent status updates</dep>
+      </external>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <technical>
+      <constraint>Redux state management for agent configurations</constraint>
+      <constraint>Real-time agent status monitoring</constraint>
+    </technical>
+    <business>
+      <constraint>Visual feedback for agent states and activities</constraint>
+      <constraint>Intuitive controls for agent lifecycle management</constraint>
+    </business>
+  </constraints>
+
+  <interfaces>
+    <ui>
+      <interface component="AgentCatalog">
+        <description>Agent discovery and browsing interface</description>
+      </interface>
+      <interface component="AgentDashboard">
+        <description>Agent status and activity monitoring</description>
+      </interface>
+    </ui>
+    <api>
+      <interface endpoint="/api/agents/**">
+        <description>Agent management and monitoring endpoints</description>
+      </interface>
+    </api>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <standard>React Testing Library for agent management components</standard>
+      <standard>Jest for real-time status updates and state management</standard>
+    </standards>
+    <locations>
+      <location>src/web/src/pages/Agents/**/__tests__/</location>
+    </locations>
+    <ideas>
+      <idea>Test agent configuration and state management</idea>
+      <idea>Test real-time status updates and activity feeds</idea>
+    </ideas>
+  </tests>
+</story-context>

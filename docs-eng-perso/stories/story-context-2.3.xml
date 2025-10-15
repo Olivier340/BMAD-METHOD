@@ -1,0 +1,104 @@
+<story-context id="story-2.3-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.3</storyId>
+    <title>Dashboard</title>
+    <status>Ready</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-2.3.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>project manager or developer</asA>
+    <iWant>comprehensive dashboard that displays real-time metrics, project status, and quick actions</iWant>
+    <soThat>monitor project progress, identify bottlenecks, and access frequently used functionality efficiently</soThat>
+    <tasks>Dashboard Layout, Real-time Metrics, Project Status Overview, Recent Activities Feed, Quick Actions Panel</tasks>
+  </story>
+
+  <acceptanceCriteria>Responsive grid layout with metric cards, real-time data fetching, project health indicators, activity timeline, quick action shortcuts</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs-eng-perso/solution-architecture.md" section="4. System Architecture - Frontend Components">
+        <description>Dashboard component specifications and data architecture</description>
+      </doc>
+      <doc path="docs-eng-perso/ux-specification.md" section="Dashboard Layout and Metrics">
+        <description>UX requirements for dashboard design and user experience</description>
+      </doc>
+      <doc path="docs-eng-perso/PRD.md" section="FR006 Dashboard principal">
+        <description>Business requirements for main dashboard functionality</description>
+      </doc>
+    </docs>
+    <code>
+      <existing pattern="src/web/**">
+        <description>Depends on Story 2.1 React Foundation and 2.2 Layout Principal</description>
+      </existing>
+      <dependencies>
+        <dep story="2.1" type="frontend">React Foundation provides base structure</dep>
+        <dep story="2.2" type="frontend">Layout Principal provides navigation framework</dep>
+      </dependencies>
+    </code>
+    <dependencies>
+      <internal>
+        <dep story="2.1" type="frontend">React Foundation with Material-UI setup</dep>
+        <dep story="2.2" type="frontend">Layout Principal for page structure</dep>
+      </internal>
+      <external>
+        <dep type="api-client" name="Axios">HTTP client for real-time data fetching</dep>
+        <dep type="real-time" name="Server-Sent Events">Live data streaming</dep>
+      </external>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <technical>
+      <constraint>Real-time data updates via Server-Sent Events</constraint>
+      <constraint>Responsive grid layout adapting to screen sizes</constraint>
+      <constraint>Redux state management for dashboard data</constraint>
+    </technical>
+    <business>
+      <constraint>Real-time metrics updates every 30 seconds</constraint>
+      <constraint>Performance optimized for large activity feeds</constraint>
+      <constraint>Consistent visual design with BMad Visual Studio theme</constraint>
+    </business>
+  </constraints>
+
+  <interfaces>
+    <ui>
+      <interface component="Dashboard">
+        <description>Main dashboard page with organized sections</description>
+      </interface>
+      <interface component="MetricCard">
+        <description>Reusable metric display components</description>
+      </interface>
+      <interface component="ActivityFeed">
+        <description>Timeline component for recent activities</description>
+      </interface>
+    </ui>
+    <api>
+      <interface endpoint="/api/metrics/**">
+        <description>Real-time metrics data endpoints</description>
+      </interface>
+      <interface endpoint="/api/projects/**">
+        <description>Project status and activity data</description>
+      </interface>
+    </api>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <standard>React Testing Library for dashboard component testing</standard>
+      <standard>Jest for real-time data handling and state management</standard>
+    </standards>
+    <locations>
+      <location>src/web/src/pages/Dashboard/**/__tests__/</location>
+      <location>src/web/src/pages/Dashboard/**/*.test.tsx</location>
+    </locations>
+    <ideas>
+      <idea>Test real-time data updates and loading states</idea>
+      <idea>Test responsive layout behavior across breakpoints</idea>
+      <idea>Test activity feed pagination and filtering</idea>
+    </ideas>
+  </tests>
+</story-context>

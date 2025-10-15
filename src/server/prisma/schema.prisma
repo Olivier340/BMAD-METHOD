@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  name      String
+  path      String   @unique
+  config    String?  // JSON configuration
+  manifest  String?  // Parsed manifest.yaml content
+  modules   String   // Array of enabled modules as JSON
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  workflows     WorkflowExecution[]
+  agents        AgentConfiguration[]
+  ideConnections IDEConnection[]
+  events        EventLog[]
+
+  @@map("projects")
+}
+
+model WorkflowExecution {
+  id          String   @id @default(cuid())
+  projectId   String
+  workflowId  String
+  workflowName String
+  status      String   // pending, running, completed, failed, cancelled
+  parameters  String?  // JSON parameters used
+  results     String?  // JSON results/output
+  startedAt   DateTime?
+  completedAt DateTime?
+  durationMs  Int?
+
+  // Relations
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("workflow_executions")
+}
+
+model AgentConfiguration {
+  id        String   @id @default(cuid())
+  projectId String
+  agentId   String
+  agentName String
+  config    String?  // JSON configuration
+  isEnabled Boolean  @default(true)
+  lastUsed  DateTime?
+  usageCount Int     @default(0)
+
+  // Relations
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("agent_configurations")
+}
+
+model IDEConnection {
+  id              String   @id @default(cuid())
+  projectId       String
+  ideType         String   // cursor, claude, gemini, vscode
+  connectionConfig String? // JSON connection details
+  isConnected     Boolean  @default(false)
+  lastHeartbeat   DateTime?
+  connectionStatus String  @default("disconnected")
+
+  // Relations
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("ide_connections")
+}
+
+model EventLog {
+  id        String   @id @default(cuid())
+  projectId String
+  eventType String   // workflow_started, agent_activated, etc.
+  eventData String?  // JSON event details
+  timestamp DateTime @default(now())
+  source    String   // component that generated event
+
+  // Relations
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("event_log")
+}
+
+model UserSession {
+  id         String   @id @default(cuid())
+  userId     String
+  tokenHash  String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  lastActivity DateTime @default(now())
+
+  @@map("user_sessions")
+}

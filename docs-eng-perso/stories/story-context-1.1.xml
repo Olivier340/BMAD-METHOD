@@ -1,0 +1,96 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.1</storyId>
+    <title>Express Server Setup</title>
+    <status>Done</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-1.1.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>développeur backend</asA>
+    <iWant>configurer le serveur Express.js de base</iWant>
+    <soThat>fournir la fondation pour l'API REST de BMad Visual Studio</soThat>
+    <tasks>Configurer le serveur Express de base; Implémenter les middleware essentiels; Créer la structure de routes; Développer la gestion d'erreurs; Configurer l'environnement</tasks>
+  </story>
+
+  <acceptanceCriteria>Serveur Express démarre correctement sur le port configuré; Configuration environnement développement vs production respectée; Middleware de sécurité et logging configurés; Structure de routes organisée avec séparation claire; Gestion d'erreurs centralisée avec format cohérent</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <item>
+        <path>docs-eng-perso/epics.md</path>
+        <title>Epic Breakdown</title>
+        <section>Epic 1 - Story 1.1: Serveur Express</section>
+        <snippet>Serveur Express - Configuration du serveur Node.js avec Express, gestion des routes et middleware</snippet>
+      </item>
+      <item>
+        <path>docs-eng-perso/solution-architecture.md</path>
+        <title>Solution Architecture</title>
+        <section>Backend Architecture</section>
+        <snippet>Express.js server with modular structure and middleware configuration</snippet>
+      </item>
+      <item>
+        <path>docs-eng-perso/PRD.md</path>
+        <title>Product Requirements Document</title>
+        <section>Technical Infrastructure</section>
+        <snippet>Node.js backend server with Express framework for API endpoints</snippet>
+      </item>
+    </docs>
+    <code>
+      <item>
+        <path>src/server/</path>
+        <kind>directory</kind>
+        <symbol>server structure</symbol>
+        <lines>1-10</lines>
+        <reason>Main server directory structure for Express.js application</reason>
+      </item>
+      <item>
+        <path>src/server/index.ts</path>
+        <kind>file</kind>
+        <symbol>main server entry point</symbol>
+        <lines>1-79</lines>
+        <reason>Primary Express server configuration and startup</reason>
+      </item>
+      <item>
+        <path>src/server/config/environment.ts</path>
+        <kind>file</kind>
+        <symbol>environment configuration</symbol>
+        <lines>1-26</lines>
+        <reason>Environment variables and configuration management</reason>
+      </item>
+    </code>
+    <dependencies>
+      <ecosystem name="Node.js">
+        <package name="express" version="^4.18.0">Web framework for Node.js</package>
+        <package name="cors" version="^2.8.5">Cross-Origin Resource Sharing middleware</package>
+        <package name="helmet" version="^6.0.0">Security middleware for Express</package>
+        <package name="morgan" version="^1.10.0">HTTP request logger middleware</package>
+        <package name="dotenv" version="^16.0.0">Environment variable loader</package>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>Use Express with TypeScript for type safety; Follow security best practices; Prepare architecture for future API REST; Consider performance and scalability</constraints>
+  <interfaces>
+    <interface>
+      <name>Express.Application</name>
+      <kind>class</kind>
+      <signature>express(): Application</signature>
+      <path>src/server/index.ts</path>
+    </interface>
+    <interface>
+      <name>ServerConfig</name>
+      <kind>interface</kind>
+      <signature>interface ServerConfig { port: number; nodeEnv: string; corsOrigins: string[]; logLevel: string; databaseUrl: string; }</signature>
+      <path>src/server/config/environment.ts</path>
+    </interface>
+  </interfaces>
+  <tests>
+    <standards>Unit tests for server components; Integration tests for middleware; API endpoint testing; Environment configuration validation</standards>
+    <locations>src/server/**/__tests__/**, src/server/**/*.test.ts, src/server/**/*.spec.ts</locations>
+    <ideas>Test server startup and shutdown; Test middleware configuration; Test health check endpoint; Test error handling; Test environment loading</ideas>
+  </tests>
+</story-context>

@@ -1,0 +1,116 @@
+<story-context id="story-2.1-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.1</storyId>
+    <title>React Foundation</title>
+    <status>Ready</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-2.1.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>frontend developer</asA>
+    <iWant>establish the React application foundation with TypeScript, Material-UI, and Redux Toolkit</iWant>
+    <soThat>build a modern, type-safe, and maintainable user interface for BMad Visual Studio</soThat>
+    <tasks>Application Setup, Material-UI Integration, Redux Toolkit Setup, Project Structure, Development Environment</tasks>
+  </story>
+
+  <acceptanceCriteria>React 18+ app with TypeScript, Material-UI v5.14.0 integration, Redux Toolkit 1.9.0 configuration, organized project structure, development environment setup</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs-eng-perso/solution-architecture.md" section="2. Technology Stack and Decisions">
+        <description>Technology stack specifications for React 18.2.0, TypeScript 5.2.0, Material-UI 5.14.0, Redux Toolkit 1.9.0, Vite 4.4.0</description>
+      </doc>
+      <doc path="docs-eng-perso/solution-architecture.md" section="3. Repository and Service Architecture">
+        <description>Monorepo structure with src/web/ as frontend root directory</description>
+      </doc>
+      <doc path="docs-eng-perso/epics.md" section="Epic 2: Interface Utilisateur - Story 1">
+        <description>Epic definition and story breakdown for React Foundation</description>
+      </doc>
+      <doc path="docs-eng-perso/PRD.md" section="FR011 Interface responsive">
+        <description>Responsive interface requirements</description>
+      </doc>
+    </docs>
+    <code>
+      <existing pattern="src/web/**">
+        <description>No existing frontend code - this is the foundation story</description>
+      </existing>
+      <dependencies>
+        <dep type="npm" name="react" version="18.2.0">Core React library</dep>
+        <dep type="npm" name="typescript" version="5.2.0">TypeScript compiler and tooling</dep>
+        <dep type="npm" name="@mui/material" version="5.14.0">Material-UI component library</dep>
+        <dep type="npm" name="@reduxjs/toolkit" version="1.9.0">Redux state management</dep>
+        <dep type="npm" name="vite" version="4.4.0">Build tool and dev server</dep>
+      </dependencies>
+    </code>
+    <dependencies>
+      <internal>
+        <dep story="1.1" type="backend">Express server setup provides API foundation</dep>
+        <dep story="1.2" type="backend">API routes for frontend integration</dep>
+      </internal>
+      <external>
+        <dep type="framework" name="React">Frontend framework foundation</dep>
+        <dep type="ui-library" name="Material-UI">Design system implementation</dep>
+        <dep type="state-management" name="Redux Toolkit">Application state management</dep>
+      </external>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <technical>
+      <constraint>Monorepo structure with src/web/ as frontend root</constraint>
+      <constraint>TypeScript strict mode enabled</constraint>
+      <constraint>Material-UI v5.14.0 with custom BMad theme</constraint>
+      <constraint>Redux Toolkit 1.9.0 with typed store</constraint>
+    </technical>
+    <business>
+      <constraint>Responsive design mobile-first approach</constraint>
+      <constraint>WCAG 2.1 AA accessibility compliance</constraint>
+      <constraint>BMad Visual Studio design consistency</constraint>
+    </business>
+  </constraints>
+
+  <interfaces>
+    <api>
+      <interface type="rest" endpoint="/api/**">
+        <description>REST API integration with backend services</description>
+      </interface>
+    </api>
+    <ui>
+      <interface component="AppLayout">
+        <description>Main application layout structure</description>
+      </interface>
+      <interface component="ThemeProvider">
+        <description>Material-UI theme provider with BMad design tokens</description>
+      </interface>
+    </ui>
+    <data>
+      <interface store="Redux">
+        <description>Centralized state management for application data</description>
+      </interface>
+    </data>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <standard>React Testing Library for component testing</standard>
+      <standard>Jest for unit tests and test utilities</standard>
+      <standard>TypeScript strict mode for type safety</standard>
+      <standard>ESLint for code quality and consistency</standard>
+    </standards>
+    <locations>
+      <location>src/web/src/**/__tests__/</location>
+      <location>src/web/src/**/*.test.tsx</location>
+      <location>src/web/src/**/*.test.ts</location>
+    </locations>
+    <ideas>
+      <idea>Test React components with user interaction simulation</idea>
+      <idea>Test Redux store state management and actions</idea>
+      <idea>Test Material-UI theme integration and responsiveness</idea>
+      <idea>Test TypeScript compilation and type safety</idea>
+      <idea>Test Vite build process and production optimization</idea>
+    </ideas>
+  </tests>
+</story-context>

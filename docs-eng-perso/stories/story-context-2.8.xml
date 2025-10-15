@@ -1,0 +1,98 @@
+<story-context id="story-2.8-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.8</storyId>
+    <title>État Global</title>
+    <status>Ready</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-2.8.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>frontend developer</asA>
+    <iWant>well-structured Redux store architecture for centralized state management across the entire application</iWant>
+    <soThat>maintain consistent state, enable efficient data flow, and provide a scalable foundation for complex multi-component interactions</soThat>
+    <tasks>Redux Store Architecture, Type-Safe State Management, Asynchronous State Management, State Persistence and Hydration, Development Tools Integration</tasks>
+  </story>
+
+  <acceptanceCriteria>Modular Redux store structure, fully typed state management, async thunks for API calls, state persistence, Redux DevTools integration</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs-eng-perso/solution-architecture.md" section="2. Technology Stack and Decisions - Redux Toolkit">
+        <description>Redux Toolkit specifications and configuration requirements</description>
+      </doc>
+      <doc path="docs-eng-perso/solution-architecture.md" section="State Management Strategy">
+        <description>State management architecture and patterns</description>
+      </doc>
+      <doc path="docs-eng-perso/solution-architecture.md" section="Type Safety Requirements">
+        <description>TypeScript integration and type safety standards</description>
+      </doc>
+    </docs>
+    <code>
+      <dependencies>
+        <dep story="2.1" type="frontend">React Foundation with TypeScript setup</dep>
+      </dependencies>
+    </code>
+    <dependencies>
+      <internal>
+        <dep story="2.1" type="frontend">TypeScript and development environment setup</dep>
+      </internal>
+      <external>
+        <dep type="state-management" name="Redux Toolkit">Redux state management library</dep>
+        <dep type="persistence" name="redux-persist">State persistence capabilities</dep>
+      </external>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <technical>
+      <constraint>Feature-based modular Redux store architecture</constraint>
+      <constraint>Complete TypeScript type coverage for all state structures</constraint>
+      <constraint>Redux Toolkit with createAsyncThunk for API operations</constraint>
+    </technical>
+    <business>
+      <constraint>State persistence for user preferences and session data</constraint>
+      <constraint>Redux DevTools integration for debugging</constraint>
+      <constraint>Scalable architecture for future features</constraint>
+    </business>
+  </constraints>
+
+  <interfaces>
+    <ui>
+      <interface component="ReduxProvider">
+        <description>Redux store provider for the entire application</description>
+      </interface>
+      <interface hook="useDispatch">
+        <description>Typed Redux dispatch hook</description>
+      </interface>
+      <interface hook="useSelector">
+        <description>Typed Redux selector hook</description>
+      </interface>
+    </ui>
+    <data>
+      <interface store="Redux">
+        <description>Centralized state management for application data</description>
+      </interface>
+    </data>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <standard>Jest for Redux store and action testing</standard>
+      <standard>TypeScript strict mode for type safety validation</standard>
+      <standard>Redux Testing Library for component integration testing</standard>
+    </standards>
+    <locations>
+      <location>src/web/src/stores/**/__tests__/</location>
+      <location>src/web/src/types/store/**</location>
+    </locations>
+    <ideas>
+      <idea>Test Redux store state management and actions</idea>
+      <idea>Test async thunk operations and error handling</idea>
+      <idea>Test state persistence and hydration</idea>
+      <idea>Test TypeScript type safety and compilation</idea>
+    </ideas>
+  </tests>
+</story-context>

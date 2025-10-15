@@ -1,0 +1,86 @@
+<story-context id="story-2.7-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.7</storyId>
+    <title>Hub Intégrations IDE</title>
+    <status>Ready</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-2.7.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>developer using multiple IDEs</asA>
+    <iWant>centralized hub for managing IDE integrations and connections with real-time monitoring</iWant>
+    <soThat>seamlessly connect and monitor Cursor, Claude Code, Gemini CLI, and VS Code while maintaining synchronized context across all development environments</soThat>
+    <tasks>IDE Connection Management, Real-time Connection Status, Context Synchronization Dashboard, IDE-Specific Configuration, Integration Monitoring and Analytics</tasks>
+  </story>
+
+  <acceptanceCriteria>IDE connection management interface, real-time status monitoring, context synchronization, IDE-specific configuration, monitoring and analytics</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs-eng-perso/solution-architecture.md" section="3. Repository and Service Architecture - Backend Services">
+        <description>IDEIntegrationHub backend integration specifications</description>
+      </doc>
+      <doc path="docs-eng-perso/PRD.md" section="FR005 Hub d'intégration IDE">
+        <description>Business requirements for IDE integration hub</description>
+      </doc>
+    </docs>
+    <code>
+      <dependencies>
+        <dep story="2.1" type="frontend">React Foundation</dep>
+        <dep story="2.2" type="frontend">Layout Principal</dep>
+      </dependencies>
+    </code>
+    <dependencies>
+      <internal>
+        <dep story="1.7" type="backend">IDE Integration Hub backend functionality</dep>
+      </internal>
+      <external>
+        <dep type="real-time" name="WebSocket">Real-time IDE connection monitoring</dep>
+      </external>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <technical>
+      <constraint>WebSocket-based real-time communication</constraint>
+      <constraint>Multi-IDE context synchronization engine</constraint>
+    </technical>
+    <business>
+      <constraint>Support for Cursor, Claude Code, Gemini CLI, VS Code</constraint>
+      <constraint>Unified context management across IDEs</constraint>
+    </business>
+  </constraints>
+
+  <interfaces>
+    <ui>
+      <interface component="IDEHub">
+        <description>Central IDE integration management interface</description>
+      </interface>
+      <interface component="ConnectionStatus">
+        <description>Real-time IDE connection status monitoring</description>
+      </interface>
+    </ui>
+    <api>
+      <interface endpoint="/api/ide/**">
+        <description>IDE integration and context synchronization endpoints</description>
+      </interface>
+    </api>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <standard>React Testing Library for IDE integration components</standard>
+      <standard>Jest for real-time connection and context management</standard>
+    </standards>
+    <locations>
+      <location>src/web/src/pages/IDEHub/**/__tests__/</location>
+    </locations>
+    <ideas>
+      <idea>Test multi-IDE context synchronization</idea>
+      <idea>Test real-time connection status updates</idea>
+    </ideas>
+  </tests>
+</story-context>

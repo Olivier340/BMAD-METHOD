@@ -1,0 +1,101 @@
+<story-context id="story-2.2-context" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.2</storyId>
+    <title>Layout Principal</title>
+    <status>Ready</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-2.2.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>frontend developer</asA>
+    <iWant>implement the main application layout with responsive sidebar navigation and header structure</iWant>
+    <soThat>users can easily navigate between different sections of BMad Visual Studio and access key functionality</soThat>
+    <tasks>Application Shell, Sidebar Navigation, Header Controls, Responsive Design, Accessibility Implementation</tasks>
+  </story>
+
+  <acceptanceCriteria>Main layout component with header/sidebar/content, collapsible sidebar with phase navigation, header with user controls, mobile-first responsive design, ARIA labels and keyboard navigation</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs-eng-perso/solution-architecture.md" section="4. System Architecture - Frontend Components">
+        <description>Frontend component architecture and layout specifications</description>
+      </doc>
+      <doc path="docs-eng-perso/ux-specification.md" section="Navigation Structure">
+        <description>UX specification for navigation layout and user flows</description>
+      </doc>
+      <doc path="docs-eng-perso/epics.md" section="Epic 2: Interface Utilisateur - Story 2">
+        <description>Epic definition and story breakdown for Layout Principal</description>
+      </doc>
+    </docs>
+    <code>
+      <existing pattern="src/web/**">
+        <description>No existing frontend code - depends on Story 2.1 React Foundation</description>
+      </existing>
+      <dependencies>
+        <dep story="2.1" type="frontend">React Foundation provides base application structure</dep>
+      </dependencies>
+    </code>
+    <dependencies>
+      <internal>
+        <dep story="2.1" type="frontend">React Foundation with Material-UI and Redux setup</dep>
+      </internal>
+      <external>
+        <dep type="ui-library" name="Material-UI">Responsive layout components and navigation</dep>
+        <dep type="routing" name="React Router">Page routing and navigation state</dep>
+      </external>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <technical>
+      <constraint>CSS Grid for main structure with Flexbox for components</constraint>
+      <constraint>Material-UI responsive patterns and breakpoints</constraint>
+      <constraint>Redux state management for layout preferences</constraint>
+    </technical>
+    <business>
+      <constraint>Phase-based navigation matching BMad-Method workflow</constraint>
+      <constraint>WCAG 2.1 AA accessibility compliance</constraint>
+      <constraint>Mobile-first responsive design approach</constraint>
+    </business>
+  </constraints>
+
+  <interfaces>
+    <ui>
+      <interface component="AppLayout">
+        <description>Main application layout with header, sidebar, content areas</description>
+      </interface>
+      <interface component="PhaseNavigation">
+        <description>Sidebar navigation organized by BMad-Method phases</description>
+      </interface>
+      <interface component="AppHeader">
+        <description>Header bar with project selector and user controls</description>
+      </interface>
+    </ui>
+    <data>
+      <interface store="Redux">
+        <description>Layout state management for sidebar toggle and theme</description>
+      </interface>
+    </data>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <standard>React Testing Library for layout component testing</standard>
+      <standard>Jest for responsive behavior and state management</standard>
+      <standard>Accessibility testing with axe-core</standard>
+    </standards>
+    <locations>
+      <location>src/web/src/components/layout/**/__tests__/</location>
+      <location>src/web/src/components/layout/**/*.test.tsx</location>
+    </locations>
+    <ideas>
+      <idea>Test responsive layout behavior across breakpoints</idea>
+      <idea>Test sidebar toggle and navigation state</idea>
+      <idea>Test keyboard navigation and ARIA compliance</idea>
+      <idea>Test Material-UI theme integration</idea>
+    </ideas>
+  </tests>
+</story-context>

@@ -1,0 +1,94 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.7</storyId>
+    <title>Hub d'intégration IDE - Architecture multi-IDEs</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs-eng-perso/stories/story-1.7.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>développeur utilisant différents IDEs</asA>
+    <iWant>disposer d'un hub d'intégration générique qui permet de connecter et synchroniser BMad Visual Studio avec différents environnements de développement</iWant>
+    <soThat>maintenir la cohérence et la synchronisation des projets</soThat>
+    <tasks>Concevoir l'architecture générique d'intégration; Implémenter le connecteur VS Code; Développer le connecteur générique; Implémenter la synchronisation bidirectionnelle; Sécuriser les connexions; Créer l'interface de gestion</tasks>
+  </story>
+
+  <acceptanceCriteria>Services de projets et workflows fonctionnent avec les données de test et scenarios réels; Architecture générique supportant plusieurs IDEs (VS Code, Cursor, IntelliJ, etc.); Connexions sécurisées et authentifiées avec les IDEs externes; Synchronisation bidirectionnelle des données de projet et de contexte; Interface de gestion complète des connexions IDE</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <item>
+        <path>docs-eng-perso/epics.md</path>
+        <title>Epic Breakdown</title>
+        <section>Epic 1 - Story 7: Hub d'intégration IDE</section>
+        <snippet>Hub d'intégration IDE - Architecture générique pour connexions multi-IDEs</snippet>
+      </item>
+      <item>
+        <path>docs-eng-perso/solution-architecture.md</path>
+        <title>Solution Architecture</title>
+        <section>IDE Integration</section>
+        <snippet>Generic IDE integration hub with multi-IDE support</snippet>
+      </item>
+      <item>
+        <path>docs-eng-perso/PRD.md</path>
+        <title>Product Requirements Document</title>
+        <section>IDE Connectivity</section>
+        <snippet>Multi-IDE integration and synchronization capabilities</snippet>
+      </item>
+    </docs>
+    <code>
+      <item>
+        <path>src/integration/IDEHub.ts</path>
+        <kind>file</kind>
+        <symbol>IDEHub class</symbol>
+        <lines>1-150</lines>
+        <reason>Main IDE integration hub with generic architecture</reason>
+      </item>
+      <item>
+        <path>src/connectors/VSCodeConnector.ts</path>
+        <kind>file</kind>
+        <symbol>VSCodeConnector class</symbol>
+        <lines>1-100</lines>
+        <reason>VS Code specific connector implementation</reason>
+      </item>
+      <item>
+        <path>src/connectors/GenericConnector.ts</path>
+        <kind>file</kind>
+        <symbol>GenericConnector class</symbol>
+        <lines>1-80</lines>
+        <reason>Generic connector for multiple IDE types</reason>
+      </item>
+    </code>
+    <dependencies>
+      <ecosystem name="Node.js">
+        <package name="ws" version="^8.14.0">WebSocket client for IDE communication</package>
+        <package name="axios" version="^1.6.0">HTTP client for REST API communication</package>
+        <package name="jsonwebtoken" version="^9.0.0">JWT token handling for authentication</package>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>L'architecture doit être extensible pour supporter de nouveaux IDEs; Considérer les performances pour la synchronisation temps réel; Préparer l'intégration avec les services de projets et workflows; Maintenir la compatibilité avec les différentes versions d'IDEs</constraints>
+  <interfaces>
+    <interface>
+      <name>IDEHub</name>
+      <kind>class</kind>
+      <signature>class IDEHub { registerConnector(ideType: string, connector: IDEConnector): void; connectToIDE(ideType: string, config: any): Promise&lt;IDEConnection&gt;; syncProject(projectId: string): Promise&lt;void&gt;; }</signature>
+      <path>src/integration/IDEHub.ts</path>
+    </interface>
+    <interface>
+      <name>IDEConnector</name>
+      <kind>interface</kind>
+      <signature>interface IDEConnector { connect(config: any): Promise&lt;boolean&gt;; disconnect(): Promise&lt;void&gt;; syncProject(project: Project): Promise&lt;void&gt;; getCapabilities(): IDECapabilities; }</signature>
+      <path>src/connectors/GenericConnector.ts</path>
+    </interface>
+  </interfaces>
+  <tests>
+    <standards>Unit tests for IDE connectors; Integration tests for IDE communication; Synchronization testing; Authentication and security tests</standards>
+    <locations>src/integration/**/__tests__/**, src/connectors/**/__tests__/**, tests/ide-integration/**</locations>
+    <ideas>Test IDE connector registration and discovery; Test project synchronization; Test authentication flows; Test error handling and reconnection</ideas>
+  </tests>
+</story-context>
