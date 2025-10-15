@@ -1,0 +1,83 @@
+# Edit Workflow - BMAD BMB Workflow
+name: edit-workflow
+description: "Interactive workflow for editing and modifying existing BMAD workflows. Provides safe editing capabilities with validation and backup features."
+author: "BMad"
+
+# Critical variables from config
+config_source: "{project-root}/bmad/bmb/config.yaml"
+project_name: "{config_source}:project_name"
+output_folder: "{config_source}:output_folder"
+user_name: "{config_source}:user_name"
+date: system-generated
+
+# Workflow components
+installed_path: "{project-root}/bmad/bmb/workflows/edit-workflow"
+
+# Instructions
+instructions_main: "{installed_path}/instructions.md"
+instructions_backup: "{installed_path}/backup-instructions.md"
+
+# Templates
+workflow_template: "{installed_path}/workflow-template.yaml"
+validation_template: "{installed_path}/validation-template.md"
+backup_template: "{installed_path}/backup-template.md"
+
+# Output configuration
+status_file: "{output_folder}/edit-workflow-status.md"
+backup_folder: "{output_folder}/workflow-backups"
+validation_report: "{output_folder}/workflow-validation-report.md"
+edited_workflow_output: "{output_folder}/edited-workflow.yaml"
+
+# Workflow targets - supported workflow types
+supported_modules:
+  - "bmb": "BMAD Method Builder workflows"
+  - "bmm": "BMAD Method Manager workflows"
+  - "core": "BMAD Core workflows"
+  - "cis": "BMAD Creative Intelligence workflows"
+
+# Editing capabilities
+editing_features:
+  - workflow_metadata: "Update name, description, author"
+  - workflow_structure: "Modify workflow steps and flow"
+  - configuration_variables: "Edit config variables and paths"
+  - templates_and_instructions: "Update template references"
+  - validation_rules: "Modify validation parameters"
+  - integration_points: "Update Claude Code integrations"
+
+# Safety features
+safety_features:
+  - automatic_backup: true
+  - validation_before_save: true
+  - rollback_capability: true
+  - change_preview: true
+  - conflict_detection: true
+
+# Workflow configuration
+interactive: true # User confirmation at each step
+autonomous: false # Requires user input for modifications
+allow_parallel: false # Sequential editing process
+require_validation: true # Must pass validation before saving
+
+# Validation rules
+validation_rules:
+  required_fields:
+    - name
+    - description
+    - installed_path
+  optional_but_recommended:
+    - author
+    - config_source
+    - instructions_main
+  path_validation: "must_exist_or_creatable"
+  yaml_syntax: "must_be_valid"
+  reference_integrity: "must_be_maintained"
+
+# Claude Code integration points
+claude_code_enhancements:
+  - injection_point: "workflow-editor"
+  - available_subagents:
+      - workflow-parser: "Parse and analyze workflow structure"
+      - validation-engine: "Validate workflow syntax and references"
+      - backup-manager: "Create and manage workflow backups"
+      - change-preview: "Preview changes before applying"
+      - conflict-resolver: "Resolve editing conflicts"

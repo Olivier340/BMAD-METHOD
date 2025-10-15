@@ -32,19 +32,31 @@
 
 **Ordered story sequence - populated at Phase 4 start:**
 
-| Epic                          | Story | ID  | Title | File |
-| ----------------------------- | ----- | --- | ----- | ---- |
-| (empty - all stories drafted) |       |     |       |      |
+| Epic   | Story | ID                   | Title        | File |
+| ------ | ----- | -------------------- | ------------ | ---- |
+| Epic 2 | 2.3   | Interface workflows  | story-2.3.md |
+| Epic 2 | 2.4   | Gestion des agents   | story-2.4.md |
+| Epic 2 | 2.5   | Hub intégrations IDE | story-2.5.md |
+| Epic 2 | 2.6   | État global          | story-2.6.md |
+| Epic 2 | 2.7   | Dashboard            | story-2.7.md |
+| Epic 2 | 2.8   | Gestion des projets  | story-2.8.md |
 
-**Total in backlog:** 0 stories
+**Total in backlog:** 6 stories
 
 #### TODO (Needs Drafting)
 
-(No more stories to draft - all stories are drafted or complete)
+**Stories en attente de développement:**
+
+- story-2.3.md (Draft) - Interface workflows
+- story-2.4.md (Draft) - Gestion des agents
+- story-2.5.md (Draft) - Hub intégrations IDE
+- story-2.6.md (Draft) - État global
+- story-2.7.md (Draft) - Dashboard
+- story-2.8.md (Draft) - Gestion des projets
 
 #### IN PROGRESS (Approved for Development)
 
-(No story currently in progress - all stories complete!)
+(No story currently in progress)
 
 #### DONE (Completed Stories)
 
@@ -60,44 +72,37 @@
 | 1.8      | story-1.8.md | 2025-10-14     | 5      |
 | 2.1      | story-2.1.md | 2025-10-15     | 3      |
 | 2.2      | story-2.2.md | 2025-10-15     | 2      |
-| 2.3      | story-2.3.md | 2025-10-15     | 3      |
-| 2.4      | story-2.4.md | 2025-10-15     | 2      |
-| 2.5      | story-2.5.md | 2025-10-15     | 3      |
-| 2.6      | story-2.6.md | 2025-10-15     | 2      |
-| 2.7      | story-2.7.md | 2025-10-15     | 3      |
-| 2.8      | story-2.8.md | 2025-10-15     | 2      |
-| 2.9      | story-2.9.md | 2025-10-15     | 3      |
 
-**Total completed:** 17 stories
+**Total completed:** 10 stories
 
-**Total points completed:** 52 points
+**Total points completed:** 32 points
 
 #### Epic/Story Summary
 
 **Total Epics:** 2
 
-**Total Stories:** 17
+**Total Stories:** 16
 
-**Stories in Backlog:** 0
+**Stories in Backlog:** 6
 
-**Stories in TODO:** 0 (should always be 0 or 1)
+**Stories in TODO:** 6 (should always be 0 or 1)
 
 **Stories in IN PROGRESS:** 0 (should always be 0 or 1)
 
-**Stories DONE:** 17
+**Stories DONE:** 10
 
 **Epic Breakdown:**
 
 - Epic 1: Infrastructure Backend (8/8 stories complete)
-- Epic 2: Interface Utilisateur (9/9 stories complete)
+- Epic 2: Interface Utilisateur (2/8 stories complete)
 
 ### Next Action Required
 
-**What to do next:** All stories complete! Run retrospective workflow or close project.
+**What to do next:** Continue Epic 2 development - 6 stories remaining in backlog.
 
-**Command to run:** Load PM agent and run 'retrospective' workflow
+**Command to run:** Load SM agent and run 'create-story' to draft next story from backlog
 
-**Agent to load:** bmad/bmm/agents/pm.md
+**Agent to load:** bmad/bmm/agents/sm.md
 
 ---
 
@@ -105,7 +110,8 @@
 
 ### Planning Decisions Made
 
-- **2025-10-15**: Story 2.9 (Nettoyer le projet de fichiers obsolètes et non liés aux épics 1 et 2) approved and marked done by DEV agent. Moved from IN PROGRESS → DONE. All stories complete - project finished!
+- **2025-10-15**: Status file corrected - Epic 2 is only 25% complete (2/8 stories done). Project continues with 6 stories remaining in Epic 2.
+- **2025-10-15**: Story 2.9 (project cleanup) completed, but Epic 2 interface development continues.
 
 ---
 

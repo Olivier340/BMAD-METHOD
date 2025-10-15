@@ -1,0 +1,59 @@
+# Template de workflow BMAD - {workflow_name}
+name: { workflow_name }
+description: "{workflow_description}"
+author: "{author}"
+version: "1.0.0"
+created_date: "{date}"
+last_modified: "{date}"
+
+# Variables de configuration
+config_source: "{project-root}/bmad/{module}/config.yaml"
+project_name: "{config_source}:project_name"
+output_folder: "{config_source}:output_folder"
+user_name: "{config_source}:user_name"
+
+# Chemins du workflow
+installed_path: "{project-root}/bmad/{module}/workflows/{workflow_name}"
+
+# Instructions
+instructions_main: "{installed_path}/instructions.md"
+instructions_backup: "{installed_path}/backup-instructions.md"
+
+# Templates
+status_template: "{project-root}/bmad/{module}/workflows/_shared/project-workflow-status-template.md"
+validation_template: "{installed_path}/validation-template.md"
+
+# Fichiers de sortie
+status_file: "{output_folder}/workflow-status.md"
+output_file: "{output_folder}/{workflow_name}-output.md"
+validation_report: "{output_folder}/{workflow_name}-validation.md"
+
+# Documents d'entrée recommandés
+recommended_inputs:
+  - brief: "{output_folder}/brief.md"
+  - requirements: "{output_folder}/requirements.md"
+
+# Configuration du workflow
+interactive: { interactive }
+autonomous: { autonomous }
+allow_parallel: { allow_parallel }
+
+# Frameworks disponibles
+frameworks:
+  - "{framework_1}"
+  - "{framework_2}"
+  - "{framework_3}"
+
+# Points d'intégration Claude Code
+claude_code_enhancements:
+  - injection_point: "{injection_point}"
+  - available_subagents:
+      - { subagent_1 }: "{description_1}"
+      - { subagent_2 }: "{description_2}"
+
+# Métadonnées BMAD
+bmad_metadata:
+  module: "{module}"
+  workflow_type: "{workflow_type}"
+  complexity_level: "{complexity_level}"
+  target_audience: "{target_audience}"

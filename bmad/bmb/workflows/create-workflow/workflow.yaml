@@ -1,0 +1,95 @@
+# Create Workflow - BMAD BMB Workflow
+name: create-workflow
+description: "Interactive workflow for creating new BMAD workflows from scratch. Provides guided workflow creation with templates, validation, and integration features."
+author: "BMad"
+
+# Critical variables from config
+config_source: "{project-root}/bmad/bmb/config.yaml"
+project_name: "{config_source}:project_name"
+output_folder: "{config_source}:output_folder"
+user_name: "{config_source}:user_name"
+date: system-generated
+
+# Workflow components
+installed_path: "{project-root}/bmad/bmb/workflows/create-workflow"
+
+# Instructions
+instructions_main: "{installed_path}/instructions.md"
+instructions_guide: "{installed_path}/workflow-creation-guide.md"
+
+# Templates
+workflow_template: "{installed_path}/workflow-template/workflow-template.yaml"
+status_template: "{project-root}/bmad/bmb/workflows/_shared/project-workflow-status-template.md"
+validation_template: "{installed_path}/workflow-template/validation-template.md"
+
+# Output configuration
+status_file: "{output_folder}/create-workflow-status.md"
+default_output_file: "{output_folder}/new-workflow.yaml"
+validation_output_file: "{output_folder}/workflow-validation-report.md"
+
+# Supported workflow types for creation
+supported_modules:
+  - "bmb": "BMAD Method Builder workflows"
+  - "bmm": "BMAD Method Manager workflows"
+  - "core": "BMAD Core workflows"
+  - "cis": "BMAD Creative Intelligence workflows"
+
+# Workflow creation features
+creation_features:
+  - workflow_metadata: "Define name, description, author, module"
+  - workflow_structure: "Configure workflow steps and flow"
+  - configuration_variables: "Set up config variables and paths"
+  - templates_and_instructions: "Create instruction files and templates"
+  - validation_rules: "Define validation parameters"
+  - integration_points: "Configure Claude Code integrations"
+  - documentation: "Generate README and usage documentation"
+
+# Creation process configuration
+creation_steps:
+  - planning: "Analyze requirements and plan workflow structure"
+  - scaffolding: "Create basic workflow structure and files"
+  - configuration: "Configure workflow parameters and variables"
+  - templating: "Generate instruction files and templates"
+  - validation: "Validate workflow structure and references"
+  - documentation: "Create usage documentation"
+  - integration: "Integrate with BMAD system"
+
+# Workflow configuration
+interactive: true # User confirmation at each step
+autonomous: false # Requires user input for workflow creation
+allow_parallel: false # Sequential creation process
+require_validation: true # Must pass validation before completion
+
+# Validation rules for new workflows
+validation_rules:
+  required_fields:
+    - name
+    - description
+    - installed_path
+    - instructions_main
+  recommended_fields:
+    - author
+    - config_source
+    - supported_modules
+    - creation_features
+  path_validation: "must_be_creatable"
+  yaml_syntax: "must_be_valid"
+  reference_integrity: "must_be_maintained"
+  uniqueness_check: "workflow_name_must_be_unique"
+
+# Claude Code integration points
+claude_code_enhancements:
+  - injection_point: "workflow-creator"
+  - available_subagents:
+      - workflow-planner: "Analyze requirements and plan workflow structure"
+      - template-generator: "Generate instruction files and templates"
+      - validation-engine: "Validate workflow syntax and references"
+      - documentation-builder: "Create usage documentation and guides"
+      - integration-manager: "Integrate workflow with BMAD system"
+
+# BMAD integration
+bmad_integration:
+  register_in_manifest: true
+  update_files_manifest: true
+  create_agent_integration: false
+  workflow_dependencies: []
