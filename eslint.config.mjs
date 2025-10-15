@@ -86,7 +86,7 @@ export default [
       // Relax many Unicorn rules that are too opinionated for this codebase
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/no-null': 'off',
-      'unicorn/filename-case': 'warn', // Warning only for filename case
+      'unicorn/filename-case': 'off', // Disabled - too many existing files to rename
       'unicorn/consistent-function-scoping': 'off', // Allow nested functions
       'unicorn/no-array-reduce': 'off', // Allow array.reduce()
       'unicorn/no-array-callback-reference': 'off', // Allow array callbacks
@@ -239,6 +239,14 @@ export default [
     rules: {
       'yml/no-empty-mapping-value': 'off',
       'unicorn/filename-case': 'off',
+    },
+  },
+
+  // BMAD workflow template files use placeholder syntax that creates empty mapping values
+  {
+    files: ['**/workflow-template/**/*.yaml', '**/workflow-template.yaml'],
+    rules: {
+      'yml/no-empty-mapping-value': 'off',
     },
   },
 ];

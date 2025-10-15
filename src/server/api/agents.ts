@@ -8,7 +8,7 @@ export const agentsRouter: Router = Router();
 // GET /api/agents/:projectId - Liste tous les agents d'un projet
 agentsRouter.get('/:projectId', async (req: Request, res: Response) => {
   try {
-    const { projectId } = req.params;
+    const { projectId: _projectId } = req.params;
     const projectPath = (req.query.path as string) || process.cwd();
 
     const agents = await agentService.discoverAgents(projectPath);
@@ -22,7 +22,7 @@ agentsRouter.get('/:projectId', async (req: Request, res: Response) => {
 // GET /api/agents/:projectId/active - Agents actifs d'un projet
 agentsRouter.get('/:projectId/active', async (req: Request, res: Response) => {
   try {
-    const { projectId } = req.params;
+    const { projectId: _projectId } = req.params;
 
     const activeAgents = await agentService.getActiveAgents(projectId);
     res.json(activeAgents);
@@ -35,7 +35,7 @@ agentsRouter.get('/:projectId/active', async (req: Request, res: Response) => {
 // POST /api/agents/:projectId/activate - Activer un agent
 agentsRouter.post('/:projectId/activate', async (req: Request, res: Response) => {
   try {
-    const { projectId } = req.params;
+    const { projectId: _projectId } = req.params;
     const { agentId, context } = req.body;
 
     if (!agentId) {
@@ -76,7 +76,7 @@ agentsRouter.post('/deactivate/:sessionId', async (req: Request, res: Response) 
 // GET /api/agents/:projectId/sessions - Historique des sessions d'agents
 agentsRouter.get('/:projectId/sessions', async (req: Request, res: Response) => {
   try {
-    const { projectId } = req.params;
+    const { projectId: _projectId } = req.params;
 
     const sessions = await agentService.getAgentSessions(projectId);
     res.json(sessions);
@@ -143,7 +143,7 @@ agentsRouter.post('/:projectId/agent/:agentId/reload', async (req: Request, res:
 // GET /api/agents/:projectId/statistics - Statistiques des agents
 agentsRouter.get('/:projectId/statistics', async (req: Request, res: Response) => {
   try {
-    const { projectId } = req.params;
+    const { projectId: _projectId } = req.params;
 
     const statistics = await agentService.getAgentStatistics(projectId);
     res.json(statistics);

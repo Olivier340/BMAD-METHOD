@@ -10,7 +10,7 @@ interface ProtectedRouteProps {
   fallbackPath?: string;
 }
 
-export default function ProtectedRoute({ children, requiredRoles = [], fallbackPath = '/' }: ProtectedRouteProps) {
+export default function ProtectedRoute({ children, requiredRoles = [], fallbackPath: _fallbackPath = '/' }: ProtectedRouteProps) {
   const { isAuthenticated, user, isLoading } = useSelector((state: RootState) => state.auth);
 
   // Show loading while checking authentication

@@ -6,7 +6,6 @@ version: "1.0.0"
 created_date: "{date}"
 last_modified: "{date}"
 module: "{module}"
-
 # Variables de configuration
 config_source: "{project-root}/bmad/{module}/config.yaml"
 project_name: "{config_source}:project_name"

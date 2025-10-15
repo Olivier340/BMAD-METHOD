@@ -6,7 +6,7 @@ export interface AppError extends Error {
   isOperational?: boolean;
 }
 
-export const errorHandler = (err: AppError, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler = (err: AppError, req: Request, res: Response, _next: NextFunction) => {
   let error = { ...err };
   error.message = err.message;
 

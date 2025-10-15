@@ -10,7 +10,7 @@ export interface WorkflowStep {
   id: string;
   name: string;
   type: string;
-  config: Record<string, any>;
+  config: Record<string, unknown>;
 }
 
 export interface WorkflowsState {

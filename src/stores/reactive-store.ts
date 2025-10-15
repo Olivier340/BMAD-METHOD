@@ -7,25 +7,25 @@ import { eventClient, ClientEventType, ClientEventData } from '../clients/event-
 // Interface pour les données d'état réactif
 export interface ReactiveState {
   projects: {
-    list: any[];
-    activeProject: any | null;
+    list: unknown[];
+    activeProject: unknown | null;
     loading: boolean;
     error: string | null;
   };
   workflows: {
-    executions: any[];
-    currentExecution: any | null;
+    executions: unknown[];
+    currentExecution: unknown | null;
     loading: boolean;
     error: string | null;
   };
   agents: {
-    activeAgents: any[];
-    sessions: any[];
+    activeAgents: unknown[];
+    sessions: unknown[];
     loading: boolean;
     error: string | null;
   };
   system: {
-    notifications: any[];
+    notifications: unknown[];
     status: 'online' | 'offline' | 'error';
     connectionCount: number;
     lastUpdate: Date | null;
@@ -36,7 +36,7 @@ export interface ReactiveState {
 export interface StateSubscription {
   id: string;
   selector: (state: ReactiveState) => any;
-  callback: (value: any) => void;
+  callback: (value: unknown) => void;
 }
 
 // Store réactif
@@ -420,7 +420,7 @@ export class ReactiveStore {
   }
 
   // S'abonner aux changements d'état
-  public subscribe(subscriptionId: string, selector: (state: ReactiveState) => any, callback: (value: any) => void): void {
+  public subscribe(subscriptionId: string, selector: (state: ReactiveState) => unknown, callback: (value: unknown) => void): void {
     this.subscriptions.set(subscriptionId, {
       id: subscriptionId,
       selector,
@@ -441,12 +441,12 @@ export class ReactiveStore {
   }
 
   // S'abonner aux événements locaux
-  public on(event: string, callback: (...args: any[]) => void): void {
+  public on(event: string, callback: (...args: unknown[]) => void): void {
     this.eventEmitter.on(event, callback);
   }
 
   // Se désabonner des événements locaux
-  public off(event: string, callback: (...args: any[]) => void): void {
+  public off(event: string, callback: (...args: unknown[]) => void): void {
     this.eventEmitter.off(event, callback);
   }
 

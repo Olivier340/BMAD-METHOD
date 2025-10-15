@@ -1,7 +1,7 @@
 import morgan from 'morgan';
 import config from '../config/environment';
 
-export const setupLogging = (app: any) => {
+export const setupLogging = (app: { use: (middleware: any) => void }) => {
   if (config.nodeEnv === 'development') {
     // Development: detailed console logging
     app.use(morgan('dev'));

@@ -251,7 +251,7 @@ export class AuthService {
     }
 
     // Remove password from response
-    const { password, ...userWithoutPassword } = user;
+    const { password: _password, ...userWithoutPassword } = user;
     return userWithoutPassword as User;
   }
 
@@ -260,7 +260,7 @@ export class AuthService {
     const users = db.prepare('SELECT * FROM users WHERE is_active = 1 ORDER BY created_at DESC').all() as User[];
 
     // Remove passwords from response
-    return users.map(({ password, ...user }) => user as User);
+    return users.map(({ password: _password, ...user }) => user as User);
   }
 
   async updateUser(userId: string, updates: Partial<User>): Promise<User | null> {
