@@ -1,6 +1,6 @@
 # Story 2.3: Dashboard
 
-Status: Draft
+Status: Ready
 
 ## Story
 

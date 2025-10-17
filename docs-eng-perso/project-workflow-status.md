@@ -47,7 +47,6 @@
 
 **Stories en attente de développement:**
 
-- story-2.3.md (Draft) - Interface workflows
 - story-2.4.md (Draft) - Gestion des agents
 - story-2.5.md (Draft) - Hub intégrations IDE
 - story-2.6.md (Draft) - État global
@@ -56,7 +55,12 @@
 
 #### IN PROGRESS (Approved for Development)
 
-(No story currently in progress)
+- **Story ID:** 2.3
+- **Story Title:** Dashboard
+- **Story File:** `story-2.3.md`
+- **Story Status:** Ready
+- **Context File:** `story-context-2.3.xml` (not yet generated)
+- **Action:** DEV should run `dev-story` workflow to implement this story
 
 #### DONE (Completed Stories)
 
@@ -83,11 +87,11 @@
 
 **Total Stories:** 16
 
-**Stories in Backlog:** 6
+**Stories in Backlog:** 5
 
-**Stories in TODO:** 6 (should always be 0 or 1)
+**Stories in TODO:** 5 (should always be 0 or 1)
 
-**Stories in IN PROGRESS:** 0 (should always be 0 or 1)
+**Stories in IN PROGRESS:** 1 (should always be 0 or 1)
 
 **Stories DONE:** 10
 
@@ -98,11 +102,11 @@
 
 ### Next Action Required
 
-**What to do next:** Continue Epic 2 development - 6 stories remaining in backlog.
+**What to do next:** Generate context for story 2.3, then implement it
 
-**Command to run:** Load SM agent and run 'create-story' to draft next story from backlog
+**Command to run:** Run 'story-context' workflow to generate implementation context (or skip to dev-story)
 
-**Agent to load:** bmad/bmm/agents/sm.md
+**Agent to load:** bmad/bmm/agents/sm.md (for story-context) OR bmad/bmm/agents/dev.md (for dev-story)
 
 ---
 
@@ -112,6 +116,7 @@
 
 - **2025-10-15**: Status file corrected - Epic 2 is only 25% complete (2/8 stories done). Project continues with 6 stories remaining in Epic 2.
 - **2025-10-15**: Story 2.9 (project cleanup) completed, but Epic 2 interface development continues.
+- **2025-10-15**: Story 2.3 (Dashboard) marked ready for development by SM agent. Moved from TODO → IN PROGRESS. Next story 2.4 moved from BACKLOG → TODO.
 
 ---
 
@@ -119,9 +124,9 @@
 
 ### For DEV (Developer) Agent
 
-**Current Status:** No stories in progress - all complete!
+**Current Status:** Story 2.3 (Dashboard) ready for development
 
-**Next Steps:** Project complete - no development work needed
+**Next Steps:** Run `dev-story` workflow to implement Story 2.3
 
 ### For PM (Product Manager) Agent
 
